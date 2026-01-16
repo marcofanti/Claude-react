@@ -1,15 +1,15 @@
-# fly.toml app configuration file generated for claude-react on 2026-01-16T17:41:38Z
+# fly.toml app configuration file generated for claude-react on 2026-01-16T18:14:33Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'claude-react'
-primary_region = 'ams'
+primary_region = 'sjc'
 
 [build]
 
 [http_service]
-  internal_port = 5173
+  internal_port = 8080
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
