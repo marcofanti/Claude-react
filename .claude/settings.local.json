@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(git -C /Users/mfanti/Documents/BehavioSec/okta/auth0/claude_react log --oneline)",
+      "Bash(git -C /Users/mfanti/Documents/BehavioSec/okta/auth0/claude_react status)",
+      "Bash(git cat-file:*)",
+      "Bash(git rev-list:*)",
+      "Bash(xargs ls:*)",
+      "Bash(tree:*)",
+      "Bash(node --version:*)",
+      "Bash(npm:*)",
+      "Bash(open http://localhost:5173/)",
+      "Bash(chmod:*)",
+      "Bash(./build-and-run.sh:*)",
+      "Bash(docker logs:*)",
+      "Bash(docker exec:*)",
+      "Bash(grep:*)",
+      "Bash(source auth0-react-app/.env)",
+      "Bash(echo:*)"
+    ]
+  }
+}

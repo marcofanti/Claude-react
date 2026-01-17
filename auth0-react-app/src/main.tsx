@@ -26,6 +26,14 @@ if (!rootElement) {
   throw new Error("Root element not found");
 }
 
+const onRedirectCallback = (appState: any) => {
+  window.history.replaceState(
+    {},
+    document.title,
+    appState?.returnTo || window.location.pathname
+  );
+};
+
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <Auth0Provider
@@ -34,6 +42,7 @@ ReactDOM.createRoot(rootElement).render(
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}
+      onRedirectCallback={onRedirectCallback}
     >
       <App />
     </Auth0Provider>

@@ -1,10 +1,10 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
+import Shipping from './Shipping';
 
-function App() {
-  const { isAuthenticated, isLoading, error, loginWithRedirect, logout } = useAuth0();
-  const [currentView, setCurrentView] = useState<'landing' | 'dashboard'>('landing');
+function HomePage() {
+  const { isAuthenticated, isLoading, error, loginWithRedirect } = useAuth0();
 
   if (isLoading) {
     return (
@@ -304,6 +304,17 @@ function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shipping" element={<Shipping />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
