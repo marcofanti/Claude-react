@@ -1,0 +1,40 @@
+# Dependencies
+auth0-react-app/node_modules
+node_modules
+
+# Build output
+auth0-react-app/dist
+dist
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Git
+.git
+.gitignore
+
+# Environment files (handled via build args for security)
+auth0-react-app/.env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+!auth0-react-app/README.md
+
+# Claude files
+.claude
+CLAUDE.md
