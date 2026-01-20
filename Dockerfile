@@ -25,39 +25,19 @@ COPY auth0-react-app/ ./
 # Build the application
 RUN npm run build
 
-# Stage 2: Serve the application with nginx
-FROM nginx:alpine
+# Stage 2: Serve the application with Node.js
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install serve package globally
+RUN npm install -g serve
 
 # Copy built files from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy nginx configuration
-COPY <<EOF /etc/nginx/conf.d/default.conf
-server {
-    listen 8080;
-    server_name localhost;
-
-    root /usr/share/nginx/html;
-    index index.html;
-
-    # Enable gzip compression
-    gzip on;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-
-    location / {
-        try_files \$uri \$uri/ /index.html;
-    }
-
-    # Cache static assets
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-}
-EOF
+COPY --from=builder /app/dist ./dist
 
 # Expose port 8080
 EXPOSE 8080
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Serve the application
+CMD ["serve", "-s", "dist", "-l", "8080"]
